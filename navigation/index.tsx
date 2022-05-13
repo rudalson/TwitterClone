@@ -30,6 +30,7 @@ import {
   RootTabScreenProps,
 } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import ProfilePicture from '../components/ProfilePicture';
 
 export default function Navigation({
   colorScheme,
@@ -95,6 +96,22 @@ function BottomTabNavigator() {
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           title: 'Home',
           tabBarIcon: ({ color }) => <TabBarIcon name='home' color={color} />,
+          headerLeft: () => (
+            <ProfilePicture
+              style={{ marginLeft: 15 }}
+              image={
+                'https://www.himalmag.com/wp-content/uploads/2019/07/sample-profile-picture.png'
+              }
+              size={40}
+            />
+          ),
+          headerTitle: () => (
+            <Ionicons
+              name={'logo-twitter'}
+              size={30}
+              color={Colors.light.tint}
+            />
+          ),
           headerRight: () => (
             // <Pressable
             //   onPress={() => navigation.navigate('Modal')}
@@ -112,14 +129,7 @@ function BottomTabNavigator() {
             <MaterialCommunityIcons
               name={'star-four-points-outline'}
               size={30}
-              style={{ marginRight: 10 }}
-              color={Colors.light.tint}
-            />
-          ),
-          headerTitle: () => (
-            <Ionicons
-              name={'logo-twitter'}
-              size={30}
+              style={{ marginRight: 15 }}
               color={Colors.light.tint}
             />
           ),
