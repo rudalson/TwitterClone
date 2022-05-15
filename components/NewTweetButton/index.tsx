@@ -1,12 +1,16 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import styles from './styles';
 
 const NewTweetButton = () => {
+  const navigation = useNavigation();
+
   const onPress = () => {
-    console.warn('Open new tweet');
+    navigation.navigate('NewTweet');
   };
 
   return (

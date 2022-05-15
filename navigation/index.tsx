@@ -31,6 +31,7 @@ import {
 } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import ProfilePicture from '../components/ProfilePicture';
+import NewTweetScreen from '../screens/NewTweetScreen';
 
 export default function Navigation({
   colorScheme,
@@ -57,17 +58,22 @@ function RootNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name='Root'
+        name="Root"
         component={BottomTabNavigator}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name='NotFound'
+        name="NewTweet"
+        component={NewTweetScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="NotFound"
         component={NotFoundScreen}
         options={{ title: 'Oops!' }}
       />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name='Modal' component={ModalScreen} />
+        <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -84,18 +90,18 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName='Home'
+      initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
         tabBarShowLabel: false,
       }}
     >
       <BottomTab.Screen
-        name='Home'
+        name="Home"
         component={HomeScreen}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
           title: 'Home',
-          tabBarIcon: ({ color }) => <TabBarIcon name='home' color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerLeft: () => (
             <ProfilePicture
               style={{ marginLeft: 15 }}
@@ -136,27 +142,27 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name='Search'
+        name="Search"
         component={TabTwoScreen}
         options={{
           title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name='search' color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name='Notifications'
+        name="Notifications"
         component={TabTwoScreen}
         options={{
           title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name='bell' color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="bell" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name='Messages'
+        name="Messages"
         component={TabTwoScreen}
         options={{
           title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name='feed' color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="feed" color={color} />,
         }}
       />
     </BottomTab.Navigator>
