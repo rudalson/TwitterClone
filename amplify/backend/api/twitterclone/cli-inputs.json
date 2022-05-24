@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "twitterclone",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/ginteu/repo/TwitterClone/amplify/backend/api/twitterclone/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 100,
+      "apiKeyExpirationDate": "2022-08-31T10:46:55.125Z",
+      "keyDescription": "better twitter"
+    }
+  }
+}
