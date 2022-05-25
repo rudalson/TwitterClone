@@ -18,7 +18,6 @@ export const createUser = /* GraphQL */ `
           id
           content
           image
-          userID
           createdAt
           updatedAt
           userTweetsId
@@ -46,7 +45,6 @@ export const updateUser = /* GraphQL */ `
           id
           content
           image
-          userID
           createdAt
           updatedAt
           userTweetsId
@@ -74,7 +72,6 @@ export const deleteUser = /* GraphQL */ `
           id
           content
           image
-          userID
           createdAt
           updatedAt
           userTweetsId
@@ -95,7 +92,6 @@ export const createTweet = /* GraphQL */ `
       id
       content
       image
-      userID
       user {
         id
         username
@@ -123,7 +119,6 @@ export const updateTweet = /* GraphQL */ `
       id
       content
       image
-      userID
       user {
         id
         username
@@ -151,7 +146,6 @@ export const deleteTweet = /* GraphQL */ `
       id
       content
       image
-      userID
       user {
         id
         username
