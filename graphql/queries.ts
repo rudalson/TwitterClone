@@ -67,6 +67,15 @@ export const getTweet = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      likes {
+        items {
+          id
+          createdAt
+          updatedAt
+          tweetLikesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       userTweetsId
@@ -93,9 +102,88 @@ export const listTweets = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        likes {
+          nextToken
+        }
         createdAt
         updatedAt
         userTweetsId
+      }
+      nextToken
+    }
+  }
+`;
+export const getLike = /* GraphQL */ `
+  query GetLike($id: ID!) {
+    getLike(id: $id) {
+      id
+      user {
+        id
+        username
+        name
+        email
+        image
+        tweets {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      tweet {
+        id
+        content
+        image
+        user {
+          id
+          username
+          name
+          email
+          image
+          createdAt
+          updatedAt
+        }
+        likes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userTweetsId
+      }
+      createdAt
+      updatedAt
+      tweetLikesId
+    }
+  }
+`;
+export const listLikes = /* GraphQL */ `
+  query ListLikes(
+    $filter: ModelLikeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listLikes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        user {
+          id
+          username
+          name
+          email
+          image
+          createdAt
+          updatedAt
+        }
+        tweet {
+          id
+          content
+          image
+          createdAt
+          updatedAt
+          userTweetsId
+        }
+        createdAt
+        updatedAt
+        tweetLikesId
       }
       nextToken
     }

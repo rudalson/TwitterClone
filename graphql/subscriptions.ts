@@ -92,6 +92,15 @@ export const onCreateTweet = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      likes {
+        items {
+          id
+          createdAt
+          updatedAt
+          tweetLikesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       userTweetsId
@@ -115,6 +124,15 @@ export const onUpdateTweet = /* GraphQL */ `
         }
         createdAt
         updatedAt
+      }
+      likes {
+        items {
+          id
+          createdAt
+          updatedAt
+          tweetLikesId
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -140,9 +158,144 @@ export const onDeleteTweet = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      likes {
+        items {
+          id
+          createdAt
+          updatedAt
+          tweetLikesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
       userTweetsId
+    }
+  }
+`;
+export const onCreateLike = /* GraphQL */ `
+  subscription OnCreateLike {
+    onCreateLike {
+      id
+      user {
+        id
+        username
+        name
+        email
+        image
+        tweets {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      tweet {
+        id
+        content
+        image
+        user {
+          id
+          username
+          name
+          email
+          image
+          createdAt
+          updatedAt
+        }
+        likes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userTweetsId
+      }
+      createdAt
+      updatedAt
+      tweetLikesId
+    }
+  }
+`;
+export const onUpdateLike = /* GraphQL */ `
+  subscription OnUpdateLike {
+    onUpdateLike {
+      id
+      user {
+        id
+        username
+        name
+        email
+        image
+        tweets {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      tweet {
+        id
+        content
+        image
+        user {
+          id
+          username
+          name
+          email
+          image
+          createdAt
+          updatedAt
+        }
+        likes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userTweetsId
+      }
+      createdAt
+      updatedAt
+      tweetLikesId
+    }
+  }
+`;
+export const onDeleteLike = /* GraphQL */ `
+  subscription OnDeleteLike {
+    onDeleteLike {
+      id
+      user {
+        id
+        username
+        name
+        email
+        image
+        tweets {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      tweet {
+        id
+        content
+        image
+        user {
+          id
+          username
+          name
+          email
+          image
+          createdAt
+          updatedAt
+        }
+        likes {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userTweetsId
+      }
+      createdAt
+      updatedAt
+      tweetLikesId
     }
   }
 `;

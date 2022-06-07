@@ -1,6 +1,6 @@
 projects:
   twitterclone:
-    schemaPath: /graphql/schema.json
+    schemaPath: ./graphql/schema.json
     includes:
       - /graphql/**/*.ts
     excludes:

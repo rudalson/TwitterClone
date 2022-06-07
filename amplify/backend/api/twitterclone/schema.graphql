@@ -54,4 +54,11 @@ type Tweet @model {
   content: String!
   image: String
   user: User! @belongsTo
+  likes: [Like] @hasMany
+}
+
+type Like @model {
+  id: ID!
+  user: User!
+  tweet: Tweet! @belongsTo
 }
