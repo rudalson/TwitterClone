@@ -11,7 +11,12 @@ import awsconfig from './aws-exports';
 import { getUser } from './graphql/queries';
 import { createUser } from './graphql/mutations';
 
-Amplify.configure(awsconfig);
+Amplify.configure({
+  ...awsconfig,
+  Analytics: {
+    disabled: true,
+  },
+});
 
 function App() {
   const isLoadingComplete = useCachedResources();
