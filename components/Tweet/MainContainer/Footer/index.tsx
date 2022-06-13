@@ -5,7 +5,7 @@ import { API, graphqlOperation, Auth } from 'aws-amplify';
 
 import { TweetType } from '../../../../types';
 import styles from './styles';
-import { createLike } from '../../../../graphql/mutations';
+import { createLike, deleteLike } from '../../../../graphql/mutations';
 
 export type FooterContainerProps = {
   tweet: TweetType;
@@ -14,6 +14,7 @@ export type FooterContainerProps = {
 const Footer = ({ tweet }: FooterContainerProps) => {
   const [user, setUser] = useState(null);
   const [myLike, setMyLike] = useState(null);
+  const [likesCount, setLikesCount] = useState(tweet.likes.items.length);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -30,7 +31,7 @@ const Footer = ({ tweet }: FooterContainerProps) => {
     fetchUser();
   }, []);
 
-  const onLike = async () => {
+  const submitLike = async () => {
     const like = {
       userLikesId: user?.attributes.sub,
       tweetLikesId: tweet.id,
@@ -41,8 +42,29 @@ const Footer = ({ tweet }: FooterContainerProps) => {
         graphqlOperation(createLike, { input: like })
       );
       setMyLike(res.data.createLike);
+      setLikesCount(likesCount + 1);
     } catch (e) {
       console.log(e);
+    }
+  };
+
+  const removeLike = async () => {
+    try {
+      const res = await API.graphql(
+        graphqlOperation(deleteLike, { input: { id: myLike?.id } })
+      );
+      setMyLike(null);
+      setLikesCount(likesCount - 1);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const onLike = async () => {
+    if (!myLike) {
+      await submitLike();
+    } else {
+      await removeLike();
     }
   };
 
@@ -64,7 +86,7 @@ const Footer = ({ tweet }: FooterContainerProps) => {
             color={!myLike ? 'grey' : 'red'}
           />
         </TouchableOpacity>
-        <Text style={styles.number}>{tweet.numberOfLikes}</Text>
+        <Text style={styles.number}>{likesCount}</Text>
       </View>
       <View style={styles.iconContainer}>
         <EvilIcons name={'share-google'} size={28} color={'grey'} />
