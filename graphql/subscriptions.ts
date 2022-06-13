@@ -21,6 +21,16 @@ export const onCreateUser = /* GraphQL */ `
         }
         nextToken
       }
+      likes {
+        items {
+          id
+          createdAt
+          updatedAt
+          userLikesId
+          tweetLikesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -42,6 +52,16 @@ export const onUpdateUser = /* GraphQL */ `
           createdAt
           updatedAt
           userTweetsId
+        }
+        nextToken
+      }
+      likes {
+        items {
+          id
+          createdAt
+          updatedAt
+          userLikesId
+          tweetLikesId
         }
         nextToken
       }
@@ -69,6 +89,16 @@ export const onDeleteUser = /* GraphQL */ `
         }
         nextToken
       }
+      likes {
+        items {
+          id
+          createdAt
+          updatedAt
+          userLikesId
+          tweetLikesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -89,6 +119,9 @@ export const onCreateTweet = /* GraphQL */ `
         tweets {
           nextToken
         }
+        likes {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -97,6 +130,7 @@ export const onCreateTweet = /* GraphQL */ `
           id
           createdAt
           updatedAt
+          userLikesId
           tweetLikesId
         }
         nextToken
@@ -122,6 +156,9 @@ export const onUpdateTweet = /* GraphQL */ `
         tweets {
           nextToken
         }
+        likes {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -130,6 +167,7 @@ export const onUpdateTweet = /* GraphQL */ `
           id
           createdAt
           updatedAt
+          userLikesId
           tweetLikesId
         }
         nextToken
@@ -155,6 +193,9 @@ export const onDeleteTweet = /* GraphQL */ `
         tweets {
           nextToken
         }
+        likes {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -163,6 +204,7 @@ export const onDeleteTweet = /* GraphQL */ `
           id
           createdAt
           updatedAt
+          userLikesId
           tweetLikesId
         }
         nextToken
@@ -186,6 +228,9 @@ export const onCreateLike = /* GraphQL */ `
         tweets {
           nextToken
         }
+        likes {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -211,6 +256,7 @@ export const onCreateLike = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      userLikesId
       tweetLikesId
     }
   }
@@ -228,6 +274,9 @@ export const onUpdateLike = /* GraphQL */ `
         tweets {
           nextToken
         }
+        likes {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -253,6 +302,7 @@ export const onUpdateLike = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      userLikesId
       tweetLikesId
     }
   }
@@ -270,6 +320,9 @@ export const onDeleteLike = /* GraphQL */ `
         tweets {
           nextToken
         }
+        likes {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -295,6 +348,7 @@ export const onDeleteLike = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      userLikesId
       tweetLikesId
     }
   }

@@ -47,6 +47,7 @@ type User @model {
   email: String!
   image: String
   tweets: [Tweet] @hasMany
+  likes: [Like] @hasMany
 }
 
 type Tweet @model {
@@ -59,6 +60,6 @@ type Tweet @model {
 
 type Like @model {
   id: ID!
-  user: User!
+  user: User! @belongsTo
   tweet: Tweet! @belongsTo
 }

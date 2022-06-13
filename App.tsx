@@ -36,9 +36,7 @@ function App() {
         const userData = await API.graphql(
           graphqlOperation(getUser, { id: userInfo.attributes.sub })
         );
-        console.log(userData);
         if (userData?.data?.getUser) {
-          console.log('user alerady exists');
         } else {
           const user = {
             id: userInfo.attributes.sub,

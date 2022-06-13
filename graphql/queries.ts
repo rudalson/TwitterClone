@@ -21,6 +21,16 @@ export const getUser = /* GraphQL */ `
         }
         nextToken
       }
+      likes {
+        items {
+          id
+          createdAt
+          updatedAt
+          userLikesId
+          tweetLikesId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -40,6 +50,9 @@ export const listUsers = /* GraphQL */ `
         email
         image
         tweets {
+          nextToken
+        }
+        likes {
           nextToken
         }
         createdAt
@@ -64,6 +77,9 @@ export const getTweet = /* GraphQL */ `
         tweets {
           nextToken
         }
+        likes {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -72,6 +88,7 @@ export const getTweet = /* GraphQL */ `
           id
           createdAt
           updatedAt
+          userLikesId
           tweetLikesId
         }
         nextToken
@@ -103,6 +120,13 @@ export const listTweets = /* GraphQL */ `
           updatedAt
         }
         likes {
+          items {
+            id
+            createdAt
+            updatedAt
+            userLikesId
+            tweetLikesId
+          }
           nextToken
         }
         createdAt
@@ -124,6 +148,9 @@ export const getLike = /* GraphQL */ `
         email
         image
         tweets {
+          nextToken
+        }
+        likes {
           nextToken
         }
         createdAt
@@ -151,6 +178,7 @@ export const getLike = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      userLikesId
       tweetLikesId
     }
   }
@@ -183,6 +211,7 @@ export const listLikes = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        userLikesId
         tweetLikesId
       }
       nextToken

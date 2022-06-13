@@ -13,6 +13,7 @@ const Feed = () => {
     setLoading(true);
     try {
       const tweetsData = await API.graphql(graphqlOperation(listTweets));
+      // console.log(tweetsData);
       setTweets(tweetsData?.data?.listTweets.items);
     } catch (e) {
       console.warn(e);
