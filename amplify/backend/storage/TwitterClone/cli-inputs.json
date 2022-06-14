@@ -1,0 +1,13 @@
+{
+  "resourceName": "TwitterClone",
+  "policyUUID": "e2ac9fab",
+  "bucketName": "twitter-clone-rudalson",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

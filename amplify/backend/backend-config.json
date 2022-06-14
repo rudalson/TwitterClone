@@ -44,5 +44,12 @@
         }
       }
     }
+  },
+  "storage": {
+    "TwitterClone": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }
