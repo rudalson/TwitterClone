@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import moment from 'moment';
+import { S3Image } from 'aws-amplify-react-native';
 
 import { TweetType } from '../../../types';
 import styles from './styles';
@@ -17,15 +18,15 @@ const MainContainer = ({ tweet }: MainContainerProps) => (
       <View style={styles.tweetHeaderNames}>
         <Text style={styles.name}>{tweet.user.name}</Text>
         <Text style={styles.username}>@{tweet.user.username}</Text>
-        <Text style={styles.createdAt}>{moment(tweet.createdAt).fromNow()}</Text>
+        <Text style={styles.createdAt}>
+          {moment(tweet.createdAt).fromNow()}
+        </Text>
       </View>
       <Entypo name={'chevron-down'} size={16} color={'grey'} />
     </View>
     <View>
       <Text style={styles.content}>{tweet.content}</Text>
-      {!!tweet.image && (
-        <Image style={styles.image} source={{ uri: tweet.image }} />
-      )}
+      {!!tweet.image && <S3Image style={styles.image} imgKey={tweet.image} />}
     </View>
     <Footer tweet={tweet} />
   </View>
